@@ -1,4 +1,6 @@
-[Demo](public/demo.gif)
+ A wall for heros. Still under construction. 
+ 
+[Click and check the Demo!](public/demo.gif)
 
 
 
