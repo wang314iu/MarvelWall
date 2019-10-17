@@ -46,16 +46,15 @@ export default class CardList extends Component {
     componentWillMount() {
         console.log('will mount raised');
 
+        APIs.GET_CHARACTERS((body) => {
+            console.log(body)
+            this.setState({ data: body.data.results, totalItems: body.data.total, isShowFullSpinner: false });
+        }, this.state.offset);
     }
 
     componentDidMount() {
         console.log('did mount');
         // this.addScrollHandler();
-
-        APIs.GET_CHARACTERS((body) => {
-            console.log(body)
-            this.setState({ data: body.data.results, totalItems: body.data.total, isShowFullSpinner: false });
-        }, this.state.offset);
     }
 
 
@@ -74,6 +73,8 @@ export default class CardList extends Component {
         //         });
         //     }, nextState.offset);
         // }
+
+
     }
 
     componentDidUpdate(prevProps, prevState, info) {
@@ -139,7 +140,7 @@ export default class CardList extends Component {
             return;
         }
 
-        if (window.scrollY === document.body.scrollHeight - window.innerHeight
+        if (window.scrollY >= document.body.scrollHeight - window.innerHeight - 1
             && this.state.offset < this.state.totalItems) {
             // if (target.scrollHeight - target.scrollTop === element.clientHeight) {
             console.log('loadNext');
