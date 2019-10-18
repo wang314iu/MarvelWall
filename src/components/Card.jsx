@@ -6,6 +6,24 @@ import Dialog from './Dialog';
 // import Tooltip from './Tooltip';
 
 class Card extends Component {
+    style = {
+        cell: {
+            alignSelf: 'center'
+        },
+        wrapper: {
+            position: 'relative',
+            padding: 0,
+            display: 'inline-flex'
+        },
+        img: {
+            maxWidth: '100%',
+            maxHeight: '100%',
+            objectFit: 'contain',
+            boxShadow: '0 9px 12px 0 rgba(0,0,0,0.4)',
+            transition: '0.4s'
+        }
+    }
+
     constructor(props) {
         super(props);
 
@@ -24,20 +42,14 @@ class Card extends Component {
 
     render() {
         return (
-            <span className="cell" style={{ alignSelf: 'center' }}>
+            <span className="cell" style={this.style.cell}>
                 <div
-                    style={{ position: 'relative', padding: 0 }}
+                    style={this.style.wrapper}
                     onClick={this.onClickHero}
                 // onMouseEnter={this.openTooltip}
                 // onMouseLeave={this.closeTooltip}
                 >
-                    <img style={{
-                        maxWidth: '100%',
-                        maxHeight: '100%',
-                        objectFit: 'contain',
-                        boxShadow: '0 9px 12px 0 rgba(0,0,0,0.4)',
-                        transition: '0.4s'
-                    }}
+                    <img style={this.style.img}
                         src={this.state.pic.path + '.' + this.state.pic.extension} alt=""></img>
 
                     <span className="overlay">
