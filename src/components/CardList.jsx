@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import APIs from '../api';
 import Card from './Card';
 import Spinner from './Spinner';
+var _ = require('lodash');
 
 // import * as data from './data.json';
 
@@ -20,6 +21,7 @@ export default class CardList extends Component {
             isShowBottomSpinner: false,
             loadDirection: 'next'
         }
+
     }
 
     render() {
@@ -40,55 +42,45 @@ export default class CardList extends Component {
                 {this.showBottomSpinner()}
             </div>
         );
-    }
 
 
-    componentWillMount() {
-        console.log('will mount raised');
-
-        APIs.GET_CHARACTERS((body) => {
-            console.log(body)
-            this.setState({ data: body.data.results, totalItems: body.data.total, isShowFullSpinner: false });
-        }, this.state.offset);
     }
 
     componentDidMount() {
         console.log('did mount');
         // this.addScrollHandler();
+        APIs.GET_CHARACTERS((body, err) => {
+            if (err != null) {
+                console.log(err);
+                this.componentDidMount();
+            } else {
+                this.setState({ data: body.data.results, totalItems: body.data.total, isShowFullSpinner: false });
+            }
+        }, this.state.offset);
     }
 
 
     componentWillUpdate(nextProps, nextState) {
         console.log('will update raised');
-
-        // if (this.state.offset !== nextState.offset) {
-        //     console.log('updated data')
-        //     APIs.GET_CHARACTERS((body) => {
-        //         this.setState({
-        //             data: body.data.results,
-        //             totalItems: body.data.total,
-        //             isShowBottomSpinner: false,
-        //             isShowTopSpinner: false,
-        //             isShowFullSpinner: false
-        //         });
-        //     }, nextState.offset);
-        // }
-
-
     }
 
     componentDidUpdate(prevProps, prevState, info) {
 
         if (prevState.offset !== this.state.offset) {
             console.log('updated data')
-            APIs.GET_CHARACTERS((body) => {
-                this.setState({
-                    data: body.data.results,
-                    totalItems: body.data.total,
-                    isShowBottomSpinner: false,
-                    isShowTopSpinner: false,
-                    isShowFullSpinner: false
-                });
+            APIs.GET_CHARACTERS((body, err) => {
+                if (err != null) {
+                    debugger
+                    this.componentDidUpdate(prevProps, prevState, info);
+                } else {
+                    this.setState({
+                        data: body.data.results,
+                        totalItems: body.data.total,
+                        isShowBottomSpinner: false,
+                        isShowTopSpinner: false,
+                        isShowFullSpinner: false
+                    });
+                }
             }, this.state.offset);
         }
 
@@ -124,10 +116,9 @@ export default class CardList extends Component {
     }
 
 
-    handleScroll = (event) => {
+    handleScroll = _.throttle((event) => {
 
         console.log(window.scrollY, window.innerHeight, document.body.scrollHeight)
-
         if (window.scrollY === 0 && this.state.offset >= 20) {
 
             this.removeScrollHandler();  // temparally remove scroll listener
@@ -142,15 +133,15 @@ export default class CardList extends Component {
 
         if (window.scrollY >= document.body.scrollHeight - window.innerHeight - 1
             && this.state.offset < this.state.totalItems) {
-            // if (target.scrollHeight - target.scrollTop === element.clientHeight) {
-            console.log('loadNext');
+            // console.log('loadNext');
             this.removeScrollHandler();  // temparally remove scroll listener
             this.setState({
                 offset: this.state.offset + 20
                 , isShowBottomSpinner: true, loadDirection: 'next'
             });
         }
-    }
+    }, 300);
+
 
     addScrollHandler = (scroll) => {
         console.log('add scroll handler');
@@ -159,13 +150,11 @@ export default class CardList extends Component {
         if (this.state.loadDirection === 'next') {
             this.log('onNext')
             window.scrollTo(0, 60);
-            // window.screenTop = 60;
         }
 
         if (this.state.loadDirection === 'prev') {
             this.log('onPrev')
             window.scrollTo(0, document.body.scrollHeight - window.innerHeight - 60);
-            // window.screenTop = document.body.scrollHeight - window.innerHeight - 60;
         }
 
         window.addEventListener('scroll', this.handleScroll);
