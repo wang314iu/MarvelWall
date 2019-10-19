@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.969c03d3.chunk.css",
-    "main.js": "/static/js/main.34dcfdcf.chunk.js",
-    "main.js.map": "/static/js/main.34dcfdcf.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.fb43e2d6.js",
-    "runtime-main.js.map": "/static/js/runtime-main.fb43e2d6.js.map",
-    "static/css/2.0624914a.chunk.css": "/static/css/2.0624914a.chunk.css",
-    "static/js/2.f8933853.chunk.js": "/static/js/2.f8933853.chunk.js",
-    "static/js/2.f8933853.chunk.js.map": "/static/js/2.f8933853.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.14d29e493ad02e325f715aa506a86f32.js": "/precache-manifest.14d29e493ad02e325f715aa506a86f32.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/2.0624914a.chunk.css.map": "/static/css/2.0624914a.chunk.css.map",
-    "static/css/main.969c03d3.chunk.css.map": "/static/css/main.969c03d3.chunk.css.map",
-    "static/media/index.css": "/static/media/wall3.932d44b2.jpg"
+    "main.css": "/MarvelWall/static/css/main.6aa24fdd.chunk.css",
+    "main.js": "/MarvelWall/static/js/main.1b3ef8be.chunk.js",
+    "main.js.map": "/MarvelWall/static/js/main.1b3ef8be.chunk.js.map",
+    "runtime-main.js": "/MarvelWall/static/js/runtime-main.981c7db0.js",
+    "runtime-main.js.map": "/MarvelWall/static/js/runtime-main.981c7db0.js.map",
+    "static/css/2.0624914a.chunk.css": "/MarvelWall/static/css/2.0624914a.chunk.css",
+    "static/js/2.f8933853.chunk.js": "/MarvelWall/static/js/2.f8933853.chunk.js",
+    "static/js/2.f8933853.chunk.js.map": "/MarvelWall/static/js/2.f8933853.chunk.js.map",
+    "index.html": "/MarvelWall/index.html",
+    "precache-manifest.143bcb4a5518e5d4b3917802720c17c1.js": "/MarvelWall/precache-manifest.143bcb4a5518e5d4b3917802720c17c1.js",
+    "service-worker.js": "/MarvelWall/service-worker.js",
+    "static/css/2.0624914a.chunk.css.map": "/MarvelWall/static/css/2.0624914a.chunk.css.map",
+    "static/css/main.6aa24fdd.chunk.css.map": "/MarvelWall/static/css/main.6aa24fdd.chunk.css.map",
+    "static/media/index.css": "/MarvelWall/static/media/wall3.932d44b2.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.fb43e2d6.js",
+    "static/js/runtime-main.981c7db0.js",
     "static/css/2.0624914a.chunk.css",
     "static/js/2.f8933853.chunk.js",
-    "static/css/main.969c03d3.chunk.css",
-    "static/js/main.34dcfdcf.chunk.js"
+    "static/css/main.6aa24fdd.chunk.css",
+    "static/js/main.1b3ef8be.chunk.js"
   ]
 }
