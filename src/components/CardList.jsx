@@ -7,6 +7,7 @@ var _ = require('lodash');
 // import * as data from './data.json';
 
 export default class CardList extends Component {
+    // browserHeight = 0;
 
     constructor(props) {
         super(props);
@@ -34,6 +35,7 @@ export default class CardList extends Component {
                     {this.state.data.map(item =>
                         <Card
                             key={item.id}
+                            id={item.id}
                             item={item}
                         />
                     )}
@@ -90,6 +92,8 @@ export default class CardList extends Component {
             console.log('scroll top')
             this.checkIfDomReadyForScroll();
         }
+
+    
     }
 
     componentWillUnmount() {
@@ -116,7 +120,7 @@ export default class CardList extends Component {
     }
 
 
-    handleScroll = _.throttle((event) => {
+    handleScroll = _.throttle(() => {
 
         console.log(window.scrollY, window.innerHeight, document.body.scrollHeight)
         if (window.scrollY === 0 && this.state.offset >= 20) {
@@ -163,6 +167,23 @@ export default class CardList extends Component {
     removeScrollHandler = () => {
         window.removeEventListener('scroll', this.handleScroll);
     }
+    // ------------------- window resize listener -----------------
+
+    // addWindowResizeLisener = () => {
+    //     window.addEventListener('resize', this.windowResizeHandler);
+    // }
+
+    // removeWindowResizeLisener = () => {
+    //     window.removeEventListener('resize', this.windowResizeHandler);
+    // }
+
+    // windowResizeHandler = _.debounce(() => {
+    //     this.getBrowserHeight();
+    // });
+
+    // getBrowserHeight = () => {
+    //     this.browserHeight = window.innerHeight;
+    // }
 
     // ------------------- scroll event -------------------------------
     log(str1, str2 = '') {

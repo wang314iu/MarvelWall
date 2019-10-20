@@ -2,7 +2,7 @@
   "name": "blog",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://www.allistorm.com",
+  "homepage": "https://wang314iu.github.io/MarvelWall/",
   "dependencies": {
     "@material-ui/core": "^4.5.0",
     "@types/jest": "^24.0.18",

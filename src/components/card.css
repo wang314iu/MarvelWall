@@ -1,11 +1,3 @@
-/* .card-style {
-    margin: 10px;
-    box-shadow: '0 4px 8px 0 rgba(0,0,0,0.2)';
-    transition: '0.3s';
-    height: '100%';
-    width: '100%';
-    object-fit: contain;
-} */
 
 @media (min-width: 200px) {
     .grid {
@@ -162,7 +154,17 @@
     justify-items: center;
 }
 
+
 .cell:hover .overlay {
     opacity: 1;
     cursor: pointer;
+    z-index: 100;
+    transform: scale(1.3);
 }
+
+.cell:hover img {
+    z-index: 99;
+    transform: scale(1.3);
+}
+
+

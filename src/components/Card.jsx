@@ -6,9 +6,11 @@ import Dialog from './Dialog';
 // import Tooltip from './Tooltip';
 
 class Card extends Component {
+
     style = {
         cell: {
-            alignSelf: 'center'
+            alignSelf: 'center',
+            // border: 'solid 3px blue'
         },
         wrapper: {
             position: 'relative',
@@ -20,7 +22,8 @@ class Card extends Component {
             maxHeight: '100%',
             objectFit: 'contain',
             boxShadow: '0 9px 12px 0 rgba(0,0,0,0.4)',
-            transition: '0.4s'
+            transition: ".5s ease"
+
         }
     }
 
@@ -49,13 +52,16 @@ class Card extends Component {
                 // onMouseEnter={this.openTooltip}
                 // onMouseLeave={this.closeTooltip}
                 >
-                    <img style={this.style.img}
-                        src={this.state.pic.path + '.' + this.state.pic.extension} alt=""></img>
+                    <img
+                        style={this.style.img}
+                        src={this.state.pic.path + '.' + this.state.pic.extension}
+                        alt=""
+                    ></img>
 
-                    <span className="overlay">
-                        <h4>
-                            {this.state.name}
-                        </h4>
+                    <span
+                        className="overlay"
+                    >
+                        <h4> {this.state.name} </h4>
                         <p>{this.state.description}</p> <br />
                         <p>Click for more ...</p>
                     </span>
@@ -78,9 +84,13 @@ class Card extends Component {
         )
     }
 
+    componentDidMount() {
+        // console.log(this)
+    }
+
+
     onClickHero = () => {
         APIs.GET_CHARACTER(this.state.id, (response) => {
-            console.log(response);
             this.setState({ series: [...response.series.items] });
             this.setState({ stories: [...response.stories.items] });
             this.setState({ publicUrls: [...response.urls] });
